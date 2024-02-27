@@ -13,6 +13,12 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
+
 
 class Author(models.Model):
     name = models.CharField(max_length=50)
@@ -20,12 +26,18 @@ class Author(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
+
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     content = models.TextField()
-    thumbnail = models.ImageField(blank=True)
+    thumbnail = models.ImageField(upload_to='thumbnails/', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='blog_posts')
     created_at = models.DateTimeField(auto_now_add=True)
