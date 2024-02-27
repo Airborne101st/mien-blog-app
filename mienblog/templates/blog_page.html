@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container w-75 mx-sm-8 mx-md-10 my-5">
+  <h1 style="text-align: center;">{{ post.title }}</h1>
+    <p class="card-text text-muted h6" style="text-align: center;">{{ post.author.name }} | {{ post.created_at.date }}</p>
+    <div class="card p-5">
+        <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="{{ post.title }}">
+        <p class="card-text text-muted h6" style="text-align: center;">This is a description of the image</p>
+        <div class="card-body">
+            <p class="card-text">{{ post.content | safe }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
