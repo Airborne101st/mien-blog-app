@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container mx-sm-8 mx-md-10 my-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for post in post_list %}
+        <div class="col">
+            <div class="card">
+                <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="{{ post.title }}"
+                     style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'post_detail' post.slug %}" style="text-decoration:None; color:black;">{{ post.title }}</a></h5>
+                    <p class="card-text text-muted h6">{{ post.author.name }} | {{ post.created_at.date }}</p>
+                    <p class="card-text">{{ post.content|slice:":100" }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
