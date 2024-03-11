@@ -8,7 +8,7 @@
                 <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="{{ post.title }}"
                      style="height: 200px; object-fit: cover;">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="{% url 'post_detail' post.slug %}" style="text-decoration:None; color:black;">{{ post.title }}</a></h5>
+                    <h5 class="card-title"><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h5>
                     <p class="card-text text-muted h6">{{ post.author.name }} | {{ post.created_at.date }}</p>
                     <p class="card-text">{{ post.content|slice:":100" }}</p>
                 </div>
